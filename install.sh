@@ -39,6 +39,13 @@ arch_install() {
 
 fedora_install() {
     sudo yum update
+    yum install "git"
+    yum install "python"
+    yum install "python-pip"
+    yum install "gtk3"
+    yum install "boost"
+    yum install "cmake"
+    yum install "libffi"
 }
 
 python_setup() {
@@ -61,7 +68,8 @@ if [ "$(grep -Ei 'arch' /etc/*release)" ]; then
 fi
 
 if [ "$(grep -Ei 'fedora|redhat' /etc/*release)" ]; then
-    echo "yum is currently not supported."
+	fedora_install
+	python_setup
 fi
 
 
